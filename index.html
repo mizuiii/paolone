@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="pixelArt.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+</head>
+
+<body>
+    <h1>Crea la tua Pixel Artina!</h1>
+    <div class="controls">
+        <div class="btns">
+            <input id="colorPicker" type="color">
+            <button id="eraserButton" onclick="toggleEraser()"><i class="material-icons">edit_off</i></button>
+            <button id="saveButton" onclick="saveImage()"><i class="material-icons">save_as</i></button>
+            <button id="resetButton" onclick="resetGrid()"><i class="material-icons">delete_outline</i></button>
+        </div>
+    </div>
+
+    <div id="pixelGrid"></div>
+
+
+
+
+
+
+
+
+
+
+    <script src="pixelArt.js"></script>
+</body>
+
+
+
+
+
+
+
+
+</html>
