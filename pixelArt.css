@@ -144,11 +144,21 @@ h1 {
 
 
     .btns {
+        position: absolute;
         display: flex;
+        flex-direction: row;
         gap: 2px;
-        top: 10px;
-        left: -230px;
+        bottom: -800px;
+        left: -50px;
+        background-color: transparent;
 
+    }
+
+    #colorPicker {
+        position: inherit;
+        left: -50px;
+        width: 45px;
+        height: 45px;
     }
 
     #resetButton,
