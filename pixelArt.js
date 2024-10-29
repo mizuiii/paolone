@@ -1,14 +1,20 @@
 const pixelGrid = document.getElementById('pixelGrid');
 const resetButton = document.getElementById('resetButton');
 const colorPicker = document.getElementById('colorPicker');
-const gridSize = 32;
 const eraserButton = document.getElementById('eraserButton');
 let currentColor = '#000000';
 let isMouseDown = false;
 let eraserActive = false;
 
+function getGridSize() {
+    return window.innerWidth <= 768 ? 16 : 32;
+}
+
 function createGrid(size) {
     pixelGrid.innerHTML = '';
+    pixelGrid.style.gridTemplateColumns = `repeat(${size}, 20px)`;
+    pixelGrid.style.gridTemplateRows = `repeat(${size}, 20px)`;
+
     for (let i = 0; i < size * size; i++) {
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
@@ -18,27 +24,6 @@ function createGrid(size) {
         pixel.addEventListener('touchmove', paintPixelOnDrag);
         pixelGrid.appendChild(pixel);
     }
-}
-
-function paintPixel(event) {
-    isMouseDown = true;
-    paint(getEventTarget(event));
-}
-
-function paintPixelOnDrag(event) {
-    if (isMouseDown) {
-        paint(getEventTarget(event));
-    }
-}
-
-function getEventTarget(event) {
-
-    if (event.touches) {
-        const touch = event.touches[0];
-        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        return element;
-    }
-    return event.target;
 }
 
 function resetGrid() {
@@ -73,6 +58,19 @@ function saveImage() {
     }
 }
 
+function paintPixel(event) {
+    if (event.target.classList.contains('pixel')) {
+        paint(event.target);
+    }
+    isMouseDown = true;
+}
+
+function paintPixelOnDrag(event) {
+    if (isMouseDown && event.target.classList.contains('pixel')) {
+        paint(event.target);
+    }
+}
+
 document.addEventListener('mouseup', () => {
     isMouseDown = false;
 });
@@ -89,4 +87,9 @@ document.addEventListener('touchmove', (event) => {
     paintPixelOnDrag(event);
 });
 
-createGrid(gridSize);
+document.addEventListener('DOMContentLoaded', () => {
+    createGrid(getGridSize());
+    window.addEventListener('resize', () => {
+        createGrid(getGridSize());
+    });
+});
