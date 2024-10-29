@@ -7,7 +7,7 @@ let isMouseDown = false;
 let eraserActive = false;
 
 function getGridSize() {
-    return window.innerWidth <= 768 ? 16 : 32;
+    return window.innerWidth <= 968 ? 16 : 32;
 }
 
 function createGrid(size) {
