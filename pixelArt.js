@@ -13,25 +13,25 @@ function getGridSize() {
 
 
 function createGrid(size) {
-    if (size !== currentGridSize) {
-        currentGridSize = size;
-        pixelGrid.innerHTML = '';
-        pixelGrid.style.gridTemplateColumns = `repeat(${size}, 20px)`;
-        pixelGrid.style.gridTemplateRows = `repeat(${size}, 20px)`;
-        pixelGrid.style.height = `${pixelGrid.clientWidth}px`;
+
+    currentGridSize = size;
+    pixelGrid.innerHTML = '';
+    pixelGrid.style.gridTemplateColumns = `repeat(${size}, 20px)`;
+    pixelGrid.style.gridTemplateRows = `repeat(${size}, 20px)`;
 
 
-        for (let i = 0; i < size * size; i++) {
-            const pixel = document.createElement('div');
-            pixel.classList.add('pixel');
-            pixel.addEventListener('mousedown', paintPixel);
-            pixel.addEventListener('mouseover', paintPixelOnDrag);
-            pixel.addEventListener('touchstart', paintPixel);
-            pixel.addEventListener('touchmove', paintPixelOnDrag);
-            pixelGrid.appendChild(pixel);
-        }
+
+    for (let i = 0; i < size * size; i++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+        pixel.addEventListener('mousedown', paintPixel);
+        pixel.addEventListener('mouseover', paintPixelOnDrag);
+        pixel.addEventListener('touchstart', paintPixel);
+        pixel.addEventListener('touchmove', paintPixelOnDrag);
+        pixelGrid.appendChild(pixel);
     }
 }
+
 
 function resetGrid() {
     const pixels = document.querySelectorAll('.pixel');
@@ -96,13 +96,14 @@ document.addEventListener('touchmove', (event) => {
     paintPixelOnDrag(event);
 });
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    createGrid(getGridSize());
+});
 window.addEventListener('resize', () => {
     const newSize = getGridSize();
-    if (newSize !== currentGridSize) {
-        createGrid(newSize);
-    }
+
+    createGrid(newSize);
 });
-document.addEventListener('DOMContentLoaded', () => {
-    createGrid(currentGridSize);
-});
+
+
+
