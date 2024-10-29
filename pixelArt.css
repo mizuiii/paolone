@@ -135,7 +135,7 @@ h1 {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
     #pixelGrid {
         grid-template-columns: repeat(16, 20px);
         grid-template-rows: repeat(16, 20px);
