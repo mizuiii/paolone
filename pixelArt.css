@@ -22,10 +22,12 @@ body::after {
     bottom: 0;
     background-image: url(dglksej-3ed5f398-b5c8-4d98-b908-43438b2964f2.gif);
     background-size: cover;
+    background-size: cover;
     opacity: 0.5;
     z-index: -1;
 
 }
+
 
 h1 {
     margin: 25px;
@@ -131,4 +133,28 @@ h1 {
 
     transition: transform 0.5s;
 
+}
+
+@media (max-width: 768px) {
+    #pixelGrid {
+        grid-template-columns: repeat(16, 20px);
+        grid-template-rows: repeat(16, 20px);
+    }
+
+
+
+    .btns {
+        display: flex;
+        gap: 2px;
+        top: 10px;
+        left: -230px;
+
+    }
+
+    #resetButton,
+    #eraserButton,
+    #saveButton {
+        padding: 6px 10px;
+
+    }
 }
